@@ -284,3 +284,31 @@ nav a:hover {
 .product-description li {
     margin-bottom: 10px;
 }
+
+
+/* Loupe */
+/* Ajoutez ceci à votre fichier styles.css */
+
+/* Loupe */
+.img-zoom-lens {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    /* Set the size of the lens: */
+    width: 150px;
+    height: 150px;
+    visibility: hidden; /* Initially hidden */
+    pointer-events: none; /* Prevent mouse events on the lens */
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1000; /* Ensure the lens is above other elements */
+  }
+  
+  /* Effet de zoom pour les miniatures */
+  .thumbnail img {
+      transition: transform 0.3s ease;
+  }
+  
+  .thumbnail img:hover {
+      transform: scale(1.2);
+  }
+  
