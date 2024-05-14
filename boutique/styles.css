@@ -11,23 +11,30 @@ html {
     background-color: #f9f9f9; /* Couleur de fond */
 }
 
-/* Style pour l'en-tête */
-.header-container {
-    width: 100%;
-    background-color: #333;
-    position: fixed;
+.overlay {
+    position: absolute;
     top: 0;
-    z-index: 1000;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Filtre noir léger */
+    z-index: 1; /* Assure que la superposition est au-dessus de l'arrière-plan */
 }
 
+/* Style pour l'en-tête */
 header {
+    position: fixed; /* Fixer l'en-tête en haut de la page */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Assurer que l'en-tête est au-dessus de tout le reste */
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.8); /* Ajouter une couleur de fond pour l'en-tête */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
-    max-width: 1200px;
-    margin: 0 auto;
 }
+
 
 .logo img {
     max-width: 50px;
@@ -39,26 +46,37 @@ nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
+    justify-content: center; /* Centrer les éléments horizontalement */
+    margin-right: 20px;
 }
 
 nav li {
-    margin: 0 10px;
+    margin: 0 10px; /* Ajouter une marge horizontale autour des éléments */
+    position: relative;
+    align-items: center;
+    margin-right: 20px;
+}
+
+/* Ajoute de la marge à droite pour les éléments précédant "Mon compte" */
+nav li:not(:last-child) {
+    margin-right: 20px;
 }
 
 nav a {
     color: #ffffff;
     text-decoration: none;
     font-size: 18px;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease; /* Ajouter une transition de couleur pour le texte */
+    margin-right: 20px;
 }
 
 nav a:hover {
-    color: cadetblue;
+    color: cadetblue; /* Changer la couleur du texte au survol */
 }
 
-
+/* Style pour la section "hero" */
 .hero {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://media.istockphoto.com/id/1216686403/fr/photo/femmes-wayuu.jpg?s=612x612&w=0&k=20&c=kx6rpu2NsvUEuU1lcsov75pQL0SCedLVDLkM4HtlbLk=');
+    background-image: url('../imgTest/hero-bg.jpg'); /* Assurez-vous que le chemin de l'image est correct */
     background-size: cover;
     background-position: center;
     color: white;
@@ -77,6 +95,7 @@ nav a:hover {
     padding: 10px 20px;
     background-color: #fff;
     margin: 20px 0;
+    text-align: center;
 }
 
 .breadcrumbs a {

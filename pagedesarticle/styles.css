@@ -31,7 +31,7 @@ html {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.411); /* Filtre noir léger */
+    background-color: rgba(0, 0, 0, 0.6); /* Filtre noir léger */
     z-index: 1; /* Assure que la superposition est au-dessus de l'arrière-plan */
 }
 
@@ -43,11 +43,12 @@ header {
     width: 100%;
     z-index: 1000; /* Assurer que l'en-tête est au-dessus de tout le reste */
     padding: 1rem;
-    background-color: rgba(0, 0, 0, 0.836); /* Ajouter une couleur de fond pour l'en-tête */
+    background-color: rgba(0, 0, 0, 0.8); /* Ajouter une couleur de fond pour l'en-tête */
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 
 .logo img {
     max-width: 50px; /* Ajustez cette valeur à la taille souhaitée */
