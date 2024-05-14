@@ -73,3 +73,12 @@ window.addEventListener('scroll', function() {
         nav.classList.remove('black-text');
     }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Sélectionne tous les éléments avec la classe .product-item et leur ajoute la classe .fade-in
+    document.querySelectorAll('.product-item').forEach(function(element, index) {
+        setTimeout(() => {
+            element.classList.add('fade-in');
+        }, index * 200); // Délai progressif pour chaque produit
+    });
+});

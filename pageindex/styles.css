@@ -159,3 +159,19 @@ nav a:hover {
 .second-section .single-product img {
     max-width: 100%; /* Assurez-vous que l'image occupe tout l'espace disponible */
 }
+
+/* Animation pour faire apparaître les éléments */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-out forwards;
+}

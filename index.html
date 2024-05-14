@@ -75,9 +75,12 @@
     </section>
 
     <script>
-        window.addEventListener('load', function() {
-            document.querySelectorAll('.page-content').forEach(function(element) {
-                element.classList.add('loaded');
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sélectionne tous les éléments avec la classe .single-product et leur ajoute la classe .fade-in
+            document.querySelectorAll('.single-product').forEach(function(element, index) {
+                setTimeout(() => {
+                    element.classList.add('fade-in');
+                }, index * 200); // Délai progressif pour chaque produit
             });
         });
     </script>
