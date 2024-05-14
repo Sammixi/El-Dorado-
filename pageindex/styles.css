@@ -153,66 +153,9 @@ nav a:hover {
 }
 
 .second-section .single-product {
-    width: calc(50% - 10px); /* Ajustez cette valeur selon vos besoins pour la marge */
+    width: 45%; /* Ajustez cette valeur selon vos besoins */
 }
 
 .second-section .single-product img {
-    max-width: 600px; /* Ajuste la taille de l'image */
-    height: auto;
-    margin-right: 20px; /* Espace entre l'image et les informations sur le produit */
-}
-
-.second-section .product-info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.second-section .product-info h3 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin: 0 0 10px 0;
-}
-
-.second-section .product-info .price {
-    font-size: 1.5rem;
-    color: #000;
-    margin-bottom: 20px;
-}
-
-/* Style pour la section "Boutique à la une" */
-.featured-section {
-    text-align: center;
-    margin: 50px 0;
-    color: #ffffff;
-}
-
-.featured-section h2 {
-    font-size: 2em;
-    margin-bottom: 20px;
-}
-
-.featured-section .products {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
-.featured-section .product {
-    flex: 1;
-    max-width: 200px; /* Ajustez cette valeur selon vos besoins */
-    margin: 20px;
-    text-align: center;
-}
-
-.featured-section .product img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto 10px;
-}
-
-.featured-section .product p {
-    margin: 5px 0;
-    color: #ffffff;
+    max-width: 100%; /* Assurez-vous que l'image occupe tout l'espace disponible */
 }
