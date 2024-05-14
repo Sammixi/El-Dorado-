@@ -11,30 +11,23 @@ html {
     background-color: #f9f9f9; /* Couleur de fond */
 }
 
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
+/* Style pour l'en-tête */
+.header-container {
     width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Filtre noir léger */
-    z-index: 1; /* Assure que la superposition est au-dessus de l'arrière-plan */
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
 }
 
-/* Style pour l'en-tête */
 header {
-    position: fixed; /* Fixer l'en-tête en haut de la page */
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000; /* Assurer que l'en-tête est au-dessus de tout le reste */
-    padding: 1rem;
-    background-color: rgba(0, 0, 0, 0.8); /* Ajouter une couleur de fond pour l'en-tête */
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
-
 
 .logo img {
     max-width: 50px;
@@ -74,9 +67,9 @@ nav a:hover {
     color: cadetblue; /* Changer la couleur du texte au survol */
 }
 
-/* Style pour la section "hero" */
+
 .hero {
-    background-image: url('../imgTest/hero-bg.jpg'); /* Assurez-vous que le chemin de l'image est correct */
+   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://media.istockphoto.com/id/1216686332/fr/photo/femmes-wayuu.jpg?s=2048x2048&w=is&k=20&c=jVR2lRDJEOElceSmBSFtGC2xsZOgVb0v2NtDAJqR8mQ=');
     background-size: cover;
     background-position: center;
     color: white;
@@ -95,7 +88,6 @@ nav a:hover {
     padding: 10px 20px;
     background-color: #fff;
     margin: 20px 0;
-    text-align: center;
 }
 
 .breadcrumbs a {
