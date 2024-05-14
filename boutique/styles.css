@@ -1,0 +1,162 @@
+/* Style de base pour garantir le défilement */
+body,
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Désactive le défilement horizontal */
+    overflow-y: auto; /* Active le défilement vertical */
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth; /* Défilement fluide */
+    background-color: #f9f9f9; /* Couleur de fond */
+}
+
+/* Style pour l'en-tête */
+.header-container {
+    width: 100%;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo img {
+    max-width: 50px;
+    height: auto;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    margin: 0 10px;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: cadetblue;
+}
+
+
+.hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://c8.alamy.com/compfr/2k0fh8d/bogota-colombie-la-candelaria-centro-historico-centre-historique-de-la-vieille-ville-doris-ortiz-artesanias-colombianas-surcursal-cancilleria-magasin-2k0fh8d.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 150px 20px;
+    margin-top: 80px; /* Pour compenser la position fixe de l'en-tête */
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+/* Style pour les breadcrumbs */
+.breadcrumbs {
+    padding: 10px 20px;
+    background-color: #fff;
+    margin: 20px 0;
+}
+
+.breadcrumbs a {
+    text-decoration: none;
+    color: #333;
+}
+
+.breadcrumbs span {
+    color: #999;
+}
+
+/* Style pour les catégories */
+.categories {
+    padding: 20px;
+    background-color: #fff;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.categories label {
+    font-size: 1.2rem;
+    margin-right: 10px;
+}
+
+#category-select {
+    padding: 10px;
+    font-size: 1rem;
+}
+
+/* Style pour la liste de produits */
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.product-item {
+    width: 30%;
+    margin: 10px;
+    padding: 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    transition: transform 0.3s ease;
+}
+
+.product-item img {
+    max-width: 100%;
+    height: auto;
+}
+
+.product-item h2 {
+    font-size: 1.5rem;
+    margin: 10px 0;
+}
+
+.product-item .price {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 10px 0;
+}
+
+.product-item .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.product-item .button:hover {
+    background-color: cadetblue;
+}
+
+.product-item:hover {
+    transform: translateY(-5px);
+}
