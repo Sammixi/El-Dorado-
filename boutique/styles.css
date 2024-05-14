@@ -9,26 +9,32 @@ html {
     font-family: Arial, sans-serif;
     scroll-behavior: smooth; /* Défilement fluide */
     background-color: #f9f9f9; /* Couleur de fond */
+    
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Filtre noir léger */
+    z-index: 1; /* Assure que la superposition est au-dessus de l'arrière-plan */
 }
 
 /* Style pour l'en-tête */
-.header-container {
-    width: 100%;
-    background-color: #333;
-    position: fixed;
-    top: 0;
-    z-index: 1000;
-}
-
 header {
+    position: fixed; /* Fixer l'en-tête en haut de la page */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Assurer que l'en-tête est au-dessus de tout le reste */
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.8); /* Ajouter une couleur de fond pour l'en-tête */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
-    max-width: 1200px;
-    margin: 0 auto;
 }
-
 .logo img {
     max-width: 50px;
     height: auto;
@@ -69,7 +75,7 @@ nav a:hover {
 
 
 .hero {
-   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://media.istockphoto.com/id/1216686332/fr/photo/femmes-wayuu.jpg?s=2048x2048&w=is&k=20&c=jVR2lRDJEOElceSmBSFtGC2xsZOgVb0v2NtDAJqR8mQ=');
+   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://media.istockphoto.com/id/1058467496/fr/photo/rue-vendent-des-sacs-de-wayuu-traditionnels-fabriqu%C3%A9s-%C3%A0-la-main-%C3%A0-cartagena-de-indias.jpg?s=612x612&w=0&k=20&c=EfjCvZY-tE44JsZFlZVwhBEbgMSUaN6sKXBzQy7q1Sg=');
     background-size: cover;
     background-position: center;
     color: white;
