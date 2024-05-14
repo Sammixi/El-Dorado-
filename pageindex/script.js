@@ -1,6 +1,7 @@
+// script.js
+
 // Créer l'en-tête et la liste de navigation
 function createHeaderAndNav() {
-    // Vérifier si l'en-tête existe déjà
     let header = document.querySelector('header');
 
     // Si l'en-tête n'existe pas, le créer
@@ -35,65 +36,81 @@ function createHeaderAndNav() {
             ul.append(li);
 
             const a = document.createElement('a');
-            a.setAttribute('href', '#' + itemText.toLowerCase()); 
-            a.textContent = itemText; 
+            a.setAttribute('href', '#' + itemText.toLowerCase());
+            a.textContent = itemText;
             li.append(a);
         });
     }
 }
 
-// Appeler la fonction pour créer l'en-tête et la liste de navigation
-createHeaderAndNav();
-
 // Ajouter une classe à l'en-tête lorsque le défilement commence
-window.addEventListener('scroll', function() {
-    // Sélectionner l'en-tête
+function handleScroll() {
     const header = document.querySelector('header');
 
-    // Définir une classe pour l'en-tête lorsqu'il est défilé
     if (window.scrollY > 0) {
         header.classList.add('scrolled');
     } else {
         header.classList.remove('scrolled');
     }
-});
 
-// Sélection de la liste de navigation
-const nav = document.querySelector('nav');
-
-// Écouteur d'événement pour détecter le défilement de la page
-window.addEventListener('scroll', function() {
-    // Récupération de la position de la liste de navigation par rapport au haut de la page
+    const nav = document.querySelector('nav');
     const navPosition = nav.getBoundingClientRect().top;
 
-    // Si la position de la liste de navigation est supérieure à la hauteur de l'en-tête, changer la couleur du texte en noir
     if (navPosition < 0) {
         nav.classList.add('black-text');
     } else {
         nav.classList.remove('black-text');
     }
-});
+}
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Sélectionne tous les éléments avec la classe .product-item et leur ajoute la classe .fade-in
-    document.querySelectorAll('.product-item').forEach(function(element, index) {
+// Ajouter des classes de fade-in aux éléments des produits
+function addFadeInToProducts() {
+    document.querySelectorAll('.product-item').forEach((element, index) => {
         setTimeout(() => {
             element.classList.add('fade-in');
         }, index * 200); // Délai progressif pour chaque produit
     });
-});
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Sélectionne tous les éléments avec la classe .single-product et leur ajoute la classe .fade-in
-    document.querySelectorAll('.single-product').forEach(function(element, index) {
+    document.querySelectorAll('.single-product').forEach((element, index) => {
         setTimeout(() => {
             element.classList.add('fade-in');
         }, index * 200); // Délai progressif pour chaque produit
     });
-});
+}
 
+// Animer les éléments de la page d'accueil
+function animateAccueilElements() {
+    const accueilElements = document.querySelectorAll('#accueil h1, #accueil h2, #accueil p, #accueil .button-container, #accueil .scroll-down');
+
+    accueilElements.forEach((element, index) => {
+        setTimeout(() => {
+            element.classList.add('animated');
+        }, index * 200); // Délai de 200 ms entre chaque élément
+    });
+}
+
+// Fonction pour défiler jusqu'à une section donnée
 function scrollToSection(id) {
     document.getElementById(id).scrollIntoView({
         behavior: 'smooth'
     });
 }
+
+// Initialiser les animations et événements lorsque le contenu est chargé
+document.addEventListener('DOMContentLoaded', function() {
+    createHeaderAndNav();
+    addFadeInToProducts();
+    animateAccueilElements();
+
+    // Réduire le délai pour commencer l'animation de fondu
+    setTimeout(function() {
+        const overlay = document.getElementById('overlay');
+        overlay.classList.add('fade-out');
+        setTimeout(function() {
+            overlay.style.display = 'none'; // Enlever complètement l'overlay après l'animation
+        }, 500); // Durée de l'animation
+    }, 200); // Réduire le délai avant de commencer l'animation de fondu
+
+    // Gérer le défilement
+    window.addEventListener('scroll', handleScroll);
+});
