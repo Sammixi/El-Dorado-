@@ -37,16 +37,17 @@ html {
 
 /* Style pour l'en-tête */
 header {
-    position: fixed; /* Fixer l'en-tête en haut de la page */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000; /* Assurer que l'en-tête est au-dessus de tout le reste */
+    z-index: 1000;
     padding: 1rem;
-    background-color: rgba(0, 0, 0, 0.8); /* Ajouter une couleur de fond pour l'en-tête */
+    background-color: rgba(0, 0, 0, 0.8);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-sizing: border-box;
 }
 
 
@@ -55,37 +56,46 @@ header {
     height: auto;
 }
 
+nav {
+    flex: 1;
+    display: flex;
+    justify-content: center; /* Center the nav links */
+}
+
 nav ul {
     display: flex;
     list-style: none;
     margin: 0;
     padding: 0;
-    justify-content: center; /* Centrer les éléments horizontalement */
-    margin-right: 20px;
 }
 
 nav li {
-    margin: 0 10px; /* Ajouter une marge horizontale autour des éléments */
+    margin: 0 10px;
     position: relative;
     align-items: center;
-    margin-right: 20px;
-}
-
-/* Ajoute de la marge à droite pour les éléments précédant "Mon compte" */
-nav li:not(:last-child) {
-    margin-right: 20px;
 }
 
 nav a {
     color: #ffffff;
     text-decoration: none;
     font-size: 18px;
-    transition: color 0.3s ease; /* Ajouter une transition de couleur pour le texte */
-    margin-right: 20px;
+    transition: color 0.3s ease;
 }
 
 nav a:hover {
-    color: cadetblue; /* Changer la couleur du texte au survol */
+    color: cadetblue;
+}
+.cart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20px; /* Adjust the margin to fit better */
+}
+
+.cart a img {
+    max-width: 25px; /* Adjust the size of the cart icon to a more visible size */
+    height: auto;
+    object-fit: contain; /* Ensure the image scales properly */
 }
 
 /* Style pour la première section */
@@ -312,4 +322,13 @@ nav a:hover {
       transform: scale(1.2);
   }
   
+  /* Cacher la barre de défilement */
+body::-webkit-scrollbar {
+    display: none; /* Cacher la barre de défilement sur les navigateurs WebKit */
+}
+
+body {
+    -ms-overflow-style: none;  /* Cacher la barre de défilement sur Internet Explorer et Edge */
+    scrollbar-width: none;  /* Cacher la barre de défilement sur Firefox */
+}
   
