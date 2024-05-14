@@ -44,3 +44,5 @@ document.addEventListener('DOMContentLoaded', () => {
         lens.style.backgroundPosition = `-${(e.clientX - rect.left) * 2 - lensWidth / 2}px -${(e.clientY - rect.top) * 2 - lensHeight / 2}px`;
     }
 });
+
+

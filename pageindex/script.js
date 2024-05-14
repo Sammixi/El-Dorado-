@@ -82,3 +82,18 @@ document.addEventListener('DOMContentLoaded', function() {
         }, index * 200); // Délai progressif pour chaque produit
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Sélectionne tous les éléments avec la classe .single-product et leur ajoute la classe .fade-in
+    document.querySelectorAll('.single-product').forEach(function(element, index) {
+        setTimeout(() => {
+            element.classList.add('fade-in');
+        }, index * 200); // Délai progressif pour chaque produit
+    });
+});
+
+function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({
+        behavior: 'smooth'
+    });
+}

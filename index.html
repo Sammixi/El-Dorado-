@@ -15,9 +15,9 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="boutique/boutique.html">Shop</a></li>
                     <li><a href="#accueil">Accueil</a></li>
-                    <li><a href="#boutique">Boutique</a></li>
+                    <li><a href="boutique/boutique.html">Boutique</a></li>
+                    <li><a href="#boutique">Nouveauté</a></li>
                     <li><a href="#histoire">Histoire</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li><a href="#mon-compte">Mon compte</a></li>
@@ -27,17 +27,20 @@
     </div>
 
     <div id="accueil" class="main-content">
-        <h1>El DORADO</h1> 
+        <h1>El DORADO</h1>
         <h2>- Ethically handmade-</h2>
         <p>Made IN COLOMBIA</p>
         <div class="button-container">
-            <a href="#boutique" class="button">SHOP NOW</a>
+            <a href="boutique/boutique.html" class="button">Boutique</a>
             <a href="#histoire" class="button">TOUT SAVOIR</a>
+        </div>
+        <div class="scroll-down" onclick="scrollToSection('boutique')">
+            <div class="arrow"></div>
         </div>
     </div>
 
     <section id="boutique" class="second-section">
-        <h2>Boutique</h2>
+        <h2>Nouveauté</h2>
         <div class="product-container">
             <div class="single-product">
                 <a href="pagedesarticle/pagearticle.html">
@@ -46,7 +49,7 @@
                 <div class="product-info">
                     <h3>Mochila L Uni</h3>
                     <p class="price">XX,XX€</p>
-                    <a href="pagedesarticle/pagearticle.html" class="button">Voir la Boutique</a>
+                    <a href="boutique/boutique.html" class="button">Voir la Boutique</a>
                 </div>
             </div>
             <div class="single-product">
@@ -75,16 +78,7 @@
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi tempore temporibus iste minus. Eos quam error facere aliquam at consequuntur possimus nostrum odit incidunt necessitatibus est, ea, modi fugiat dicta!</p>
     </section>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Sélectionne tous les éléments avec la classe .single-product et leur ajoute la classe .fade-in
-            document.querySelectorAll('.single-product').forEach(function(element, index) {
-                setTimeout(() => {
-                    element.classList.add('fade-in');
-                }, index * 200); // Délai progressif pour chaque produit
-            });
-        });
-    </script>
+    
     <script src="pageindex/script.js" defer></script>
 </body>
 </html>
