@@ -1,0 +1,162 @@
+/* Style de base pour garantir le défilement */
+body,
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    /* Désactive le défilement horizontal */
+    overflow-y: auto;
+    /* Active le défilement vertical */
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+    /* Défilement fluide */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://media.istockphoto.com/id/1216686332/fr/photo/femmes-wayuu.jpg?s=2048x2048&w=is&k=20&c=jVR2lRDJEOElceSmBSFtGC2xsZOgVb0v2NtDAJqR8mQ=');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Style pour l'overlay */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Filtre noir léger */
+    z-index: 1;
+    /* Assure que la superposition est au-dessus de l'arrière-plan */
+}
+
+/* Style pour l'en-tête */
+header {
+    position: fixed;
+    /* Fixer l'en-tête en haut de la page */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    /* Assurer que l'en-tête est au-dessus de tout le reste */
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Ajouter une couleur de fond pour l'en-tête */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    /* Centrer les éléments horizontalement */
+    margin-right: 20px;
+}
+
+nav li {
+    margin: 0 10px;
+    /* Ajouter une marge horizontale autour des éléments */
+    position: relative;
+    align-items: center;
+    margin-right: 20px;
+}
+
+/* Ajoute de la marge à droite pour les éléments précédant "Mon compte" */
+nav li:not(:last-child) {
+    margin-right: 20px;
+
+}
+
+
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+    margin-right: 20px;
+    /* Ajouter une transition de couleur pour le texte */
+}
+
+nav a:hover {
+    color: cadetblue;
+    /* Changer la couleur du texte au survol */
+}
+
+/* Style pour la première section */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    /* Hauteur initiale pour la première vue */
+    padding: 40px;
+    /* Espacement autour du contenu */
+    color: #ffffff;
+    text-align: center;
+}
+
+/* Style pour la deuxième section */
+.second-section {
+    background-color: white;
+    color: rgb(0, 0, 0);
+    width: 100%;
+    padding: 20px;
+    height: 100vh;
+    /* Assure une hauteur minimale pour le défilement */
+    opacity: 0;
+    /* Commencez avec une opacité de 0 */
+    transition: opacity 1s ease-in-out;
+    /* Transition douce pour l'opacité */
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Style pour les boutons */
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.button {
+    display: inline-block;
+    background-color: #fcfcfc00;
+    color: #ffffff;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+    margin-right: 1rem;
+    font-size: 1.2rem;
+    position: relative;
+    font-weight: bold;
+}
+
+.button:hover {
+    background-color: #828b92ab;
+}
+
+/* Style pour le texte de la deuxième section */
+.second-section h2 {
+    margin-bottom: 20px;
+}
+
+/* Style pour le texte noir de la liste de navigation */
+.black-text nav a {
+    color: #000000;
+    /* Changer la couleur du texte en noir */
+}
