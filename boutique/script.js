@@ -1,14 +1,3 @@
-
-
-
-// Ajout du logo dans la liste de navigation
-const imgLogo = document.createElement('img');
-imgLogo.src = 'img/logo.png'; // Assurez-vous que le chemin vers le logo est correct
-imgLogo.style.height = '50px';
-const liLogo = document.createElement('li');
-liLogo.appendChild(imgLogo);
-ul.appendChild(liLogo);
-
 // Ajout des liens à la liste de navigation
 articles.forEach(article => {
     const li = document.createElement('li');
