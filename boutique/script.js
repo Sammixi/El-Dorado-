@@ -1,14 +1,5 @@
 
 
-// Création de l'en-tête avec la liste de navigation
-const header = document.createElement('header');
-document.body.append(header);
-
-const nav = document.createElement('nav');
-header.appendChild(nav);
-
-const ul = document.createElement('ul');
-nav.appendChild(ul);
 
 // Ajout du logo dans la liste de navigation
 const imgLogo = document.createElement('img');
