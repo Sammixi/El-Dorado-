@@ -1,37 +1,4 @@
-// Données des articles - Exemple
-const articles = [
-    { name: 'article1', title: 'Titre 1', image: 'img/article1.jpg', article: 'Description de l\'article 1' },
-    { name: 'article2', title: 'Titre 2', image: 'img/article2.jpg', article: 'Description de l\'article 2' },
-    { name: 'article3', title: 'Titre 3', image: 'img/article3.jpg', article: 'Description de l\'article 3' }
-];
 
-// Création de l'en-tête avec la liste de navigation
-const header = document.createElement('header');
-document.body.append(header);
-
-const nav = document.createElement('nav');
-header.appendChild(nav);
-
-const ul = document.createElement('ul');
-nav.appendChild(ul);
-
-// Ajout du logo dans la liste de navigation
-const imgLogo = document.createElement('img');
-imgLogo.src = 'img/logo.png'; // Assurez-vous que le chemin vers le logo est correct
-imgLogo.style.height = '50px';
-const liLogo = document.createElement('li');
-liLogo.appendChild(imgLogo);
-ul.appendChild(liLogo);
-
-// Ajout des liens à la liste de navigation
-articles.forEach(article => {
-    const li = document.createElement('li');
-    const a = document.createElement('a');
-    a.href = `#${article.name}`;
-    a.textContent = article.title;
-    li.appendChild(a);
-    ul.appendChild(li);
-});
 
 // Création des sections pour les articles
 articles.forEach((article, index) => {
