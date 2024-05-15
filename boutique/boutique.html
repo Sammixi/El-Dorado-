@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boutique</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <div class="header-container">
         <header>
@@ -17,11 +19,11 @@
                     <img src="../pageindex/facebook.jpg" alt="facebook">
                 </a>
                 <div class="cart">
-                <a href="https://www.instagram.com/eldorado.handmade/" target="_blank">
-                    <img src="../pageindex/insta.jpg" alt="insta">
-                </a>
+                    <a href="https://www.instagram.com/eldorado.handmade/" target="_blank">
+                        <img src="../pageindex/insta.jpg" alt="insta">
+                    </a>
+                </div>
             </div>
-        </div>
             <nav>
                 <ul>
                     <li><a href="../index.html#accueil">Accueil</a></li>
@@ -61,23 +63,33 @@
             <img src="../imgTest/000.JPG" alt="Produit 1">
             <h2>Mochila L Macram</h2>
             <p class="price">XX,XX€</p>
-            <a href="../pagedesarticle/pagearticle.html?id=1" class="button">Voir le produit</a>
+            <div class="button-container">
+                <a href="../pagedesarticle/pagearticle.html?id=1" class="button left-button">Voir le produit</a>
+                <button class="button right-button add-to-cart" data-product-id="1">Ajouter au panier</button>
+            </div>
         </div>
         <div class="product-item">
             <img src="../imgTest/003.JPG" alt="Produit 2">
             <h2>Mochila L Multi</h2>
             <p class="price">XX,XX€</p>
-            <a href="../pagedesarticle/pagearticle.html?id=2" class="button">Voir le produit</a>
+            <div class="button-container">
+                <a href="../pagedesarticle/pagearticle.html?id=2" class="button left-button">Voir le produit</a>
+                <button class="button right-button add-to-cart" data-product-id="2">Ajouter au panier</button>
+            </div>
         </div>
         <div class="product-item">
             <img src="../imgTest/006.JPG" alt="Produit 3">
             <h2>Mochila L Multi</h2>
             <p class="price">XX,XX€</p>
-            <a href="../pagedesarticle/pagearticle.html?id=3" class="button">Voir le produit</a>
+            <div class="button-container">
+                <a href="../pagedesarticle/pagearticle.html?id=3" class="button left-button">Voir le produit</a>
+                <button class="button right-button add-to-cart" data-product-id="3">Ajouter au panier</button>
+            </div>
         </div>
         <!-- Ajouter d'autres produits ici -->
     </section>
 
-    <script src="../pageindex/script.js" defer></script>
+    <script src="script.js" defer></script>
 </body>
+
 </html>
