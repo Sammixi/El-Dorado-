@@ -1,9 +1,4 @@
-// Données des articles - Exemple
-const articles = [
-    { name: 'article1', title: 'Titre 1', image: 'img/article1.jpg', article: 'Description de l\'article 1' },
-    { name: 'article2', title: 'Titre 2', image: 'img/article2.jpg', article: 'Description de l\'article 2' },
-    { name: 'article3', title: 'Titre 3', image: 'img/article3.jpg', article: 'Description de l\'article 3' }
-];
+
 
 // Création de l'en-tête avec la liste de navigation
 const header = document.createElement('header');
