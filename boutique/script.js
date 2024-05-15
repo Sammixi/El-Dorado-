@@ -1,12 +1,3 @@
-// Ajout des liens à la liste de navigation
-articles.forEach(article => {
-    const li = document.createElement('li');
-    const a = document.createElement('a');
-    a.href = `#${article.name}`;
-    a.textContent = article.title;
-    li.appendChild(a);
-    ul.appendChild(li);
-});
 
 // Création des sections pour les articles
 articles.forEach((article, index) => {
