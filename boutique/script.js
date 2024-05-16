@@ -1,6 +1,53 @@
-document.addEventListener('DOMContentLoaded', () => {
-    function ajouterAuPanier(productId, quantity) {
-        fetch('../panier/ajouter_au_panier.php', {
+// Ajout des liens à la liste de navigation
+articles.forEach(article => {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = `#${article.name}`;
+    a.textContent = article.title;
+    li.appendChild(a);
+    ul.appendChild(li);
+});
+
+// Création des sections pour les articles
+articles.forEach((article, index) => {
+    const section = document.createElement('section');
+    section.id = article.name;
+    document.body.appendChild(section);
+
+    const imgArticle = document.createElement('img');
+    imgArticle.src = article.image;
+    imgArticle.className = 'rounded';
+    section.appendChild(imgArticle);
+
+    const div = document.createElement('div');
+    section.appendChild(div);
+
+    const h2 = document.createElement('h2');
+    h2.textContent = article.title;
+    div.appendChild(h2);
+
+    const p = document.createElement('p');
+    p.textContent = article.article;
+    div.appendChild(p);
+
+    if (index % 2 !== 0) {
+        section.insertBefore(div, imgArticle);
+    }
+
+    // Ajouter des écouteurs d'événements pour les boutons "Ajouter au panier"
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', function () {
+            let productId = this.getAttribute('data-product-id');
+            addToCart(productId, 1);
+        });
+    });
+});
+document.addEventListener("DOMContentLoaded", function() {
+    console.log("Document loaded");
+
+    // Fonction pour ajouter un article au panier
+    function addToCart(productId, quantity) {
+        fetch('../ajouter_au_panier.php', { // Ajustez le chemin ici si nécessaire
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
