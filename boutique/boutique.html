@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boutique</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="animations.css">
+    <script src="commun/common.js" defer></script>
 </head>
 
 <body>
@@ -25,7 +27,7 @@
                 </div>
             </div>
             <nav>
-                <ul>
+                <ul id="navigation-list" class="nav-center">
                     <li><a href="../index.html#accueil">Accueil</a></li>
                     <li><a href="boutique.html">Boutique</a></li>
                     <li><a href="../index.html#boutique">Nouveauté</a></li>
@@ -35,8 +37,9 @@
                 </ul>
             </nav>
             <div class="cart">
-                <a href="panier/panier.html">
+                <a href="../panier/panier.html">
                     <img src="../pageindex/panier.png" alt="Cart">
+                    <span id="cart-count" class="cart-count">0</span>
                 </a>
             </div>
         </header>
@@ -54,42 +57,41 @@
         <label for="category-select">Catégories de produits</label>
         <select id="category-select">
             <option value="">Sélectionner une catégorie</option>
-            <!-- Ajouter des options de catégories ici -->
         </select>
     </section>
 
     <section class="product-list">
         <div class="product-item">
-            <img src="../imgTest/000.JPG" alt="Produit 1">
+            <img src="../imgTest/000.JPG" alt="Article 1">
             <h2>Mochila L Macram</h2>
-            <p class="price">XX,XX€</p>
+            <p class="price">10,00€</p>
             <div class="button-container">
-                <a href="../pagedesarticle/pagearticle.html?id=1" class="button left-button">Voir le produit</a>
+                <a href="../pagedesarticle/article.php?id=1" class="button left-button">Voir l'article</a>
                 <button class="button right-button add-to-cart" data-product-id="1">Ajouter au panier</button>
             </div>
         </div>
         <div class="product-item">
-            <img src="../imgTest/003.JPG" alt="Produit 2">
+            <img src="../imgTest/003.JPG" alt="Article 2">
             <h2>Mochila L Multi</h2>
-            <p class="price">XX,XX€</p>
+            <p class="price">15,00€</p>
             <div class="button-container">
-                <a href="../pagedesarticle/pagearticle.html?id=2" class="button left-button">Voir le produit</a>
+                <a href="../pagedesarticle/article.php?id=2" class="button left-button">Voir l'article</a>
                 <button class="button right-button add-to-cart" data-product-id="2">Ajouter au panier</button>
             </div>
         </div>
         <div class="product-item">
-            <img src="../imgTest/006.JPG" alt="Produit 3">
+            <img src="../imgTest/006.JPG" alt="Article 3">
             <h2>Mochila L Multi</h2>
-            <p class="price">XX,XX€</p>
+            <p class="price">20,00€</p>
             <div class="button-container">
-                <a href="../pagedesarticle/pagearticle.html?id=3" class="button left-button">Voir le produit</a>
+                <a href="../pagedesarticle/article.php?id=3" class="button left-button">Voir l'article</a>
                 <button class="button right-button add-to-cart" data-product-id="3">Ajouter au panier</button>
             </div>
         </div>
-        <!-- Ajouter d'autres produits ici -->
     </section>
 
     <script src="script.js" defer></script>
+
 </body>
 
 </html>

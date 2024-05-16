@@ -1,23 +1,34 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 session_start();
-require 'db_connect.php';
 
 header('Content-Type: application/json');
 
-$product_id = isset($_POST['product_id']) ? (int)$_POST['product_id'] : 0;
-
-if (!$product_id) {
-    echo json_encode(['error' => 'ID de produit manquant']);
+if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+    echo json_encode(['success' => false, 'message' => 'ID de produit manquant ou incorrect.']);
     exit;
 }
 
-if (isset($_SESSION['panier'][$product_id])) {
-    unset($_SESSION['panier'][$product_id]);
-    echo json_encode(['success' => true]);
-} else {
-    echo json_encode(['error' => 'Produit non trouvé dans le panier']);
+$product_id = (int)$_GET['id'];
+
+if (!isset($_SESSION['panier'])) {
+    echo json_encode(['success' => false, 'message' => 'Le panier est vide.']);
+    exit;
 }
+
+$panier = $_SESSION['panier'];
+
+if (!isset($panier[$product_id])) {
+    echo json_encode(['success' => false, 'message' => 'Produit non trouvé dans le panier.']);
+    exit;
+}
+
+// Supprimer l'article du panier
+unset($panier[$product_id]);
+
+// Mettre à jour la session panier
+$_SESSION['panier'] = $panier;
+
+echo json_encode(['success' => true, 'message'  => 'Article supprimé du panier.']);

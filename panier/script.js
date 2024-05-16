@@ -1,51 +1,102 @@
-document.addEventListener("DOMContentLoaded", function () {
-    console.log("Document loaded");
+document.addEventListener('DOMContentLoaded', () => {
+    const cartItems = document.getElementById('cart-items');
+    const productCountElement = document.getElementById('product-count');
+    const subtotalElement = document.getElementById('subtotal');
+    const totalElement = document.getElementById('total');
 
-    // Fonction pour charger le panier
-    function chargerPanier() {
-        fetch('obtenir_panier.php')
+    function afficherPanier() {
+        fetch('../panier/obtenir_panier.php')
             .then(response => response.json())
             .then(data => {
-                console.log("Panier chargé", data);
-                let cartItemsContainer = document.getElementById('cart-items');
-                cartItemsContainer.innerHTML = '';
+                console.log('Panier:', data);
+                cartItems.innerHTML = ''; // Vider le panier
+
+                if (data.length === 0) {
+                    cartItems.innerHTML = '<p>Votre panier est vide.</p>';
+                    productCountElement.textContent = '0 PRODUIT';
+                    subtotalElement.textContent = '0,00 €';
+                    totalElement.textContent = '0,00 €';
+                    updateCartCount();
+                    return;
+                }
+
                 let subtotal = 0;
+                let totalItems = 0;
 
                 data.forEach(item => {
-                    let itemTotalPrice = item.prix * item.quantity;
-                    subtotal += itemTotalPrice;
-
-                    let cartItem = document.createElement('div');
+                    const cartItem = document.createElement('div');
                     cartItem.className = 'cart-item';
-                    cartItem.innerHTML = `
+
+                    const prix = parseFloat(item.prix);
+
+                    if (isNaN(prix)) {
+                        console.error('Prix non valide pour l\'article', item);
+                        return;
+                    }
+
+                    const itemDetails = `
                         <img src="${item.image}" alt="${item.nom}">
                         <div class="item-details">
-                            <p class="item-name">${item.nom}</p>
-                            <p class="item-color">${item.couleur}</p>
-                            <p class="item-price">${itemTotalPrice.toFixed(2)} €</p>
-                            <button class="remove-from-cart" data-product-id="${item.id}">Supprimer</button>
+                            <h4>${item.nom}</h4>
+                            <p>${item.couleur}</p>
+                            <p>${item.quantite} x ${prix.toFixed(2)} €</p>
                         </div>
+                        <button class="remove-item" data-id="${item.id}">Supprimer</button>
                     `;
-                    cartItemsContainer.appendChild(cartItem);
+
+                    cartItem.innerHTML = itemDetails;
+                    cartItems.appendChild(cartItem);
+
+                    subtotal += prix * item.quantite;
+                    totalItems += item.quantite;
                 });
 
-                document.getElementById('subtotal').innerText = subtotal.toFixed(2) + ' €';
-                document.getElementById('total').innerText = subtotal.toFixed(2) + ' €';
+                subtotalElement.textContent = `${subtotal.toFixed(2)} €`;
+                const total = subtotal + 13.00; // Supposons une taxe fixe
+                totalElement.textContent = `${total.toFixed(2)} €`;
+                productCountElement.textContent = `${totalItems} PRODUIT${totalItems > 1 ? 'S' : ''}`;
 
-                // Ajouter des écouteurs d'événements pour les boutons de suppression
-                document.querySelectorAll('.remove-from-cart').forEach(button => {
-                    button.addEventListener('click', function () {
-                        let productId = this.getAttribute('data-product-id');
-                        removeFromCart(productId);
+                updateCartCount();
+
+                document.querySelectorAll('.remove-item').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const itemId = e.target.getAttribute('data-id');
+                        supprimerArticle(itemId);
                     });
                 });
             })
-            .catch(error => console.error('Erreur lors du chargement du panier :', error));
+            .catch(error => {
+                console.error('Erreur lors de la récupération du panier:', error);
+                cartItems.innerHTML = '<p>Erreur lors de la récupération du panier. Veuillez réessayer plus tard.</p>';
+                productCountElement.textContent = '0 PRODUIT';
+                subtotalElement.textContent = '0,00 €';
+                totalElement.textContent = '0,00 €';
+                updateCartCount();
+            });
     }
 
-    // Fonction pour ajouter un article au panier
-    function addToCart(productId, quantity) {
-        fetch('ajouter_au_panier.php', {
+    function supprimerArticle(id) {
+        fetch(`../panier/supprimer_du_panier.php?id=${id}`, { method: 'GET' })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Réponse de la suppression:', data);
+                if (data.success) {
+                    afficherNotification('Article supprimé du panier');
+                    afficherPanier(); // Mettre à jour le panier après suppression
+                    updateCartCount();
+                } else {
+                    afficherNotification(data.message, true);
+                    console.error('Erreur lors de la suppression de l\'article:', data.message);
+                }
+            })
+            .catch(error => {
+                afficherNotification('Erreur lors de la suppression de l\'article', true);
+                console.error('Erreur lors de la suppression de l\'article:', error);
+            });
+    }
+
+    function ajouterAuPanier(productId, quantity) {
+        fetch('../panier/ajouter_au_panier.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -55,67 +106,59 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 console.log("Réponse du serveur après ajout au panier", data);
-                if (!data.error) {
-                    chargerPanier(); // Recharger le panier après l'ajout
+                if (data.success) {
+                    afficherNotification('Produit ajouté au panier');
+                    afficherPanier();
+                    updateCartCount();
                 } else {
-                    alert(data.error); // Afficher une alerte en cas d'erreur
+                    afficherNotification(data.error, true);
                 }
             })
-            .catch(error => console.error('Erreur lors de l\'ajout au panier :', error));
+            .catch(error => {
+                afficherNotification('Erreur lors de l\'ajout au panier', true);
+                console.error('Erreur lors de l\'ajout au panier :', error);
+            });
     }
 
-    // Fonction pour supprimer un article du panier
-    function removeFromCart(productId) {
-        fetch('supprimer_du_panier.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: `product_id=${productId}`
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log("Réponse du serveur après suppression du panier", data);
-                if (!data.error) {
-                    chargerPanier(); // Recharger le panier après la suppression
-                } else {
-                    alert(data.error); // Afficher une alerte en cas d'erreur
-                }
-            })
-            .catch(error => console.error('Erreur lors de la suppression du panier :', error));
+    function afficherNotification(message, isError = false) {
+        const notification = document.getElementById('notification');
+        notification.textContent = message;
+        notification.style.backgroundColor = isError ? '#f44336' : '#cadetblue';
+        notification.style.display = 'block';
+
+        setTimeout(() => {
+            notification.style.display = 'none';
+        }, 3000);
     }
 
-    // Fonction pour vider le panier
-    function emptyCart() {
-        fetch('vider_panier.php', {
-            method: 'POST'
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log("Réponse du serveur après vidage du panier", data);
-                if (!data.error) {
-                    chargerPanier(); // Recharger le panier après le vidage
-                } else {
-                    alert(data.error); // Afficher une alerte en cas d'erreur
-                }
-            })
-            .catch(error => console.error('Erreur lors du vidage du panier :', error));
+    function updateCartCount() {
+        const cartCountElement = document.getElementById('cart-count');
+
+        if (cartCountElement) {
+            fetch('../panier/obtenir_panier.php')
+                .then(response => response.json())
+                .then(data => {
+                    let totalItems = 0;
+
+                    data.forEach(item => {
+                        totalItems += item.quantite;
+                    });
+
+                    cartCountElement.textContent = totalItems;
+                })
+                .catch(error => {
+                    console.error('Erreur lors de la récupération du panier:', error);
+                    cartCountElement.textContent = '0';
+                });
+        }
     }
 
-    // Charger le panier au chargement de la page
-    chargerPanier();
-
-    // Ajouter un article au panier (test)
-    document.querySelector('.add-to-cart').addEventListener('click', function () {
-        console.log("Bouton ajouter au panier cliqué");
-        let productId = this.getAttribute('data-product-id'); // ID de produit fictif pour le test
-        let quantity = 1;
-        addToCart(productId, quantity);
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', () => {
+            const productId = button.getAttribute('data-product-id');
+            ajouterAuPanier(productId, 1);
+        });
     });
 
-    // Vider le panier
-    document.getElementById('empty-cart').addEventListener('click', function () {
-        console.log("Bouton vider le panier cliqué");
-        emptyCart();
-    });
+    afficherPanier();
 });

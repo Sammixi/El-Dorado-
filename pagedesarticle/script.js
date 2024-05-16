@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainImage = document.getElementById('main-product-image');
     const lens = document.getElementById('lens');
     const thumbnails = document.querySelectorAll('.thumbnail img');
+    const addToCartButton = document.querySelector('.add-to-cart');
 
     thumbnails.forEach(thumbnail => {
         thumbnail.addEventListener('click', () => {
@@ -23,12 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const rect = mainImage.getBoundingClientRect();
         const lensWidth = lens.offsetWidth;
         const lensHeight = lens.offsetHeight;
-        
-        // Position the lens 20px to the right and 20px below the mouse cursor
+
         let lensX = e.clientX + 20;
         let lensY = e.clientY + 20;
-        
-        // Boundary checks to ensure the lens stays within the viewport
+
         const minX = window.pageXOffset + 20;
         const minY = window.pageYOffset + 20;
         const maxX = window.pageXOffset + window.innerWidth - lensWidth - 20;
@@ -43,6 +42,38 @@ document.addEventListener('DOMContentLoaded', () => {
         lens.style.backgroundSize = `${mainImage.width * 2}px ${mainImage.height * 2}px`;
         lens.style.backgroundPosition = `-${(e.clientX - rect.left) * 2 - lensWidth / 2}px -${(e.clientY - rect.top) * 2 - lensHeight / 2}px`;
     }
+
+    if (addToCartButton) {
+        addToCartButton.addEventListener('click', () => {
+            const productId = addToCartButton.getAttribute('data-product-id');
+            addToCart(productId, 1);
+        });
+    }
+
+    function addToCart(productId, quantity) {
+        fetch('../panier/ajouter_au_panier.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: `product_id=${productId}&quantity=${quantity}`
+        })
+            .then(response => response.text())
+            .then(data => {
+                console.log("Réponse brute du serveur après ajout au panier", data);
+                try {
+                    let jsonData = JSON.parse(data);
+                    console.log("Réponse du serveur après ajout au panier", jsonData);
+                    if (!jsonData.error) {
+
+                    } else {
+                        alert(jsonData.error);
+                    }
+                } catch (e) {
+                    console.error("Erreur de parsing JSON : ", e);
+                    console.error("Données de réponse brute : ", data);
+                }
+            })
+            .catch(error => console.error('Erreur lors de l\'ajout au panier :', error));
+    }
 });
-
-

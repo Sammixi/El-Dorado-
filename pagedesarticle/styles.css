@@ -93,13 +93,33 @@ nav a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 20px; /* Ajuster la marge pour mieux s'adapter */
+    margin-left: 20px;
+    position: relative;
+    display: inline-block;
+    /* Ajuster la marge pour mieux s'adapter */
 }
 
 .cart a img {
-    max-width: 25px; /* Ajuster la taille de l'icône du panier */
+    max-width: 25px;
+    /* Ajuster la taille de l'icône du panier */
     height: auto;
-    object-fit: contain; /* Assurer une bonne mise à l'échelle de l'image */
+    object-fit: contain;
+    /* Assurer une bonne mise à l'échelle de l'image */
+}
+
+
+.cart-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: #5aa7a7;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 5px;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Style pour la première section */
