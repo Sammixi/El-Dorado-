@@ -1,5 +1,5 @@
 <?php
-require 'db_connect.php'; // Assurez-vous que le chemin vers db_connect.php est correct
+require 'db_connect.php'; 
 
 header('Content-Type: application/json');
 

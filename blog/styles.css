@@ -1,0 +1,194 @@
+h1,
+h2,
+h3,
+.header-title {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Utiliser Montserrat pour le texte de navigation et les sous-titres */
+nav a,
+.sub-title {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Utiliser Roboto pour le corps du texte */
+body,
+p {
+    font-family: 'Roboto', sans-serif;
+}
+
+body,
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    /* Désactive le défilement horizontal */
+    overflow-y: auto;
+    /* Active le défilement vertical */
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+    /* Défilement fluide */
+    background-color: #f9f9f9;
+    /* Couleur de fond */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Filtre noir léger */
+    z-index: 1;
+    /* Assure que la superposition est au-dessus de l'arrière-plan */
+}
+
+/* Style pour l'en-tête */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.logo {
+    margin-right: 20px;
+    /* Ajouter un espace à droite du logo */
+}
+
+.logo img {
+    max-width: 50px;
+    height: auto;
+}
+
+nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    /* Centrer les liens de navigation */
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    margin: 0 10px;
+    position: relative;
+    align-items: center;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: cadetblue;
+}
+
+.cart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20px;
+    position: relative;
+    display: inline-block;
+    /* Ajuster la marge pour mieux s'adapter */
+}
+
+.cart a img {
+    max-width: 25px;
+    /* Ajuster la taille de l'icône du panier */
+    height: auto;
+    object-fit: contain;
+    /* Assurer une bonne mise à l'échelle de l'image */
+}
+
+.cart-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: #5aa7a7;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 5px;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.blog-section {
+    padding: 60px 0; /* Ajout d'un espace supplémentaire pour éviter que les images ne touchent le header */
+    background-color: #f9f9f9;
+}
+
+.blog-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px; /* Ajout d'un espacement entre les cartes */
+}
+
+.blog-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 20px;
+    max-width: 500px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    /* Suppression de l'animation au survol */
+}
+
+.blog-card img {
+    width: 100%;
+    height: auto;
+    margin-top: 20px; /* Ajout d'un espace au-dessus de l'image */
+}
+
+.blog-content {
+    padding: 20px;
+}
+
+.blog-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: #333;
+}
+
+.blog-content p {
+    font-family: 'Roboto', sans-serif;
+    color: #555;
+    margin: 10px 0;
+}
+
+.blog-link {
+    display: inline-block;
+    margin-top: 10px;
+    font-family: 'Montserrat', sans-serif;
+    color: #5aa7a7;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.blog-link:hover {
+    color: #333;
+}
+

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="../animations/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../pageindex/icon.png" type="image/png">
+    <link rel="stylesheet" href="../navigation/stylescontact.css">
+</head>
+
+<body>
+    <div class="header-container">
+        <header>
+            <div class="logo">
+                <img src="../pageindex/logo.png" alt="Logo">
+            </div>
+            <div class="cart">
+                <a href="#facebook">
+                    <img src="../pageindex/facebook.jpg" alt="facebook">
+                </a>
+                <a href="https://www.instagram.com/eldorado.handmade/" target="_blank">
+                    <img src="../pageindex/insta.jpg" alt="insta">
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="../index.html#accueil">Accueil</a></li>
+                    <li><a href="../boutique/boutique.html">Boutique</a></li>
+                    <li><a href="../index.html#boutique">Nouveauté</a></li>
+                    <li><a href="../index.html#histoire">Blog</a></li>
+                    <li><a href="../navigation/nouscontacter.html">Contact</a></li>
+                    
+                </ul>
+            </nav>
+            <div class="cart">
+                <a href="../panier/panier.html">
+                    <img src="../pageindex/panier.png" alt="Cart">
+                    <span id="cart-count" class="cart-count">0</span>
+                </a>
+            </div>
+        </header>
+    </div>
+
+    <section class="hero">
+        <h1>Contact</h1>
+    </section>
+
+    <div class="container">
+        <h2>Besoin d'un conseil, d'une info ?</h2>
+        <form id="contact-form">
+            <label for="name">Votre nom (obligatoire)</label>
+            <input type="text" id="name" name="name" required><br>
+
+            <label for="email">Votre adresse de messagerie (obligatoire)</label>
+            <input type="email" id="email" name="email" required><br>
+
+            <label for="phone">Votre numéro de téléphone</label>
+            <input type="tel" id="phone" name="phone"><br>
+
+            <label for="subject">Objet</label>
+            <input type="text" id="subject" name="subject"><br>
+
+            <label for="message">Votre message</label>
+            <textarea id="message" name="message"></textarea><br>
+
+            <button type="submit">Envoyer</button>
+        </form>
+    </div>
+
+    <footer></footer>
+    <script src="../footer/footer.js" defer></script>
+
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var phone = document.getElementById('phone').value;
+            var subject = document.getElementById('subject').value;
+            var message = document.getElementById('message').value;
+
+            var emailBody = {
+                name: name,
+                email: email,
+                phone: phone,
+                subject: subject,
+                message: message
+            };
+
+            fetch('http://localhost:3000/send', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(emailBody)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                    alert("Message envoyé avec succès");
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    alert("Erreur lors de l'envoi du message: " + error);
+                });
+        });
+
+        function updateCartCount() {
+            var productCountElement = document.getElementById('cart-count');
+            fetch('../panier/obtenir_panier.php')
+                .then(response => response.json())
+                .then(data => {
+                    let totalItems = 0;
+                    data.forEach(item => {
+                        totalItems += item.quantite;
+                    });
+                    if (productCountElement) productCountElement.textContent = totalItems.toString();
+                })
+                .catch(error => {
+                    console.error('Erreur lors de la mise à jour du compteur de panier :', error);
+                    if (productCountElement) productCountElement.textContent = '0';
+                });
+        }
+
+        updateCartCount();
+    </script>
+</body>
+
+</html>

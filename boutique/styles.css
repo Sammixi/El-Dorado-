@@ -1,3 +1,22 @@
+h1,
+h2,
+h3,
+.header-title {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Utiliser Montserrat pour le texte de navigation et les sous-titres */
+nav a,
+.sub-title {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Utiliser Roboto pour le corps du texte */
+body,
+p {
+    font-family: 'Roboto', sans-serif;
+}
+
 body,
 html {
     height: 100%;
@@ -12,7 +31,6 @@ html {
     /* Défilement fluide */
     background-color: #f9f9f9;
     /* Couleur de fond */
-
 }
 
 .overlay {
@@ -101,7 +119,6 @@ nav a:hover {
     /* Assurer une bonne mise à l'échelle de l'image */
 }
 
-
 .cart-count {
     position: absolute;
     top: -10px;
@@ -184,7 +201,11 @@ nav a:hover {
     text-align: center;
     background-color: #f9f9f9;
     border: 1px solid #ddd;
-    transition: transform 0.3s ease;
+    transition: transform 0.5s ease;
+    /* Ralentir la transition à 0.5s */
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    /* Appliquer l'animation de fondu en entrée */
 }
 
 .product-item img {
@@ -234,30 +255,128 @@ body {
     /* Cacher la barre de défilement sur Firefox */
 }
 
+/* Style général pour les boutons */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #000000;
+    /* Couleur noire */
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button:hover {
+    background-color: #000000;
+    /* Couleur noire foncée */
+    transform: scale(1.05);
+    /* Légère agrandissement */
+}
+
+.button:active {
+    background-color: #000000;
+    /* Couleur encore plus foncée */
+    transform: scale(0.95);
+    /* Légère réduction */
+}
+
+/* Style spécifique pour les boutons de pagination */
+.pagination a {
+    color: #000000;
+    /* Couleur noire */
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: 1px solid #ddd;
+    margin: 0 2px;
+    border-radius: 5px;
+}
+
+.pagination a.active {
+    background-color: #000000;
+    /* Couleur noire */
+    color: white;
+    border: 1px solid #000000;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+    color: #000000;
+    /* Couleur noire */
+}
+
+/* Style pour le conteneur de pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    /* Ajout d'espace en dessous des boutons */
+}
+
+/* Style pour les conteneurs de bouton */
 .button-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 10px;
     margin-top: 10px;
 }
 
 .left-button {
-    margin-right: auto;
+    margin-right: 0;
 }
 
 .right-button {
-    margin-left: auto;
+    margin-left: 0;
 }
 
-.button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #333;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+/* Style pour les éléments de produit */
+.product-item {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.5s ease;
+    /* Ralentir la transition à 0.5s */
 }
 
-.button:hover {
-    background-color: cadetblue;
+.product-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.product-item img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.product-item h2 {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.product-item .price {
+    font-size: 18px;
+    color: #000000;
+    margin: 10px 0;
+}
+
+/* Animation de fondu en entrée */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }

@@ -6,8 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Panier</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="../pageindex/icon.png" type="image/png">
     <link rel="stylesheet" href="../animations/animations.css">
-    <script src="commun/common.js" defer></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script src="../commun/common.js" defer></script>
 </head>
 
 <body>
@@ -27,13 +31,12 @@
                 </div>
             </div>
             <nav>
-                <ul id="navigation-list" class="nav-center">
+                <ul>
                     <li><a href="../index.html#accueil">Accueil</a></li>
                     <li><a href="../boutique/boutique.html">Boutique</a></li>
                     <li><a href="../index.html#boutique">Nouveauté</a></li>
-                    <li><a href="../index.html#histoire">Histoire</a></li>
-                    <li><a href="../index.html#contact">Contact</a></li>
-                    <li><a href="../index.html#mon-compte">Mon compte</a></li>
+                    <li><a href="../index.html#histoire">Blog</a></li>
+                    <li><a href="../navigation/nouscontacter.html">Contact</a></li>
                 </ul>
             </nav>
             <div class="cart">
@@ -55,7 +58,7 @@
                 <!-- Les articles du panier seront ajoutés ici dynamiquement par le script JavaScript -->
             </div>
             <div class="checkout-button">
-                <button>CHECKOUT</button>
+                <button>ACHETER</button>
             </div>
         </section>
 
@@ -84,7 +87,9 @@
     </div>
 
     <div id="notification" class="notification">Produit ajouté au panier</div>
+    <footer></footer>
     <script src="script.js" defer></script>
+    <script src="../footer/footer.js" defer></script>
 </body>
 
 </html>

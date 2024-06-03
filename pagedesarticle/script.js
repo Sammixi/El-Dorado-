@@ -1,9 +1,59 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const cartCountElement = document.getElementById('cart-count');
     const mainImage = document.getElementById('main-product-image');
     const lens = document.getElementById('lens');
     const thumbnails = document.querySelectorAll('.thumbnail img');
-    const addToCartButton = document.querySelector('.add-to-cart');
 
+    // Fonction pour mettre à jour le compteur du panier
+    function updateCartCount() {
+        fetch('../panier/obtenir_panier.php')
+            .then(response => response.json())
+            .then(data => {
+                let totalItems = 0;
+                data.forEach(item => {
+                    totalItems += item.quantite;
+                });
+                cartCountElement.textContent = totalItems;
+            })
+            .catch(error => {
+                console.error('Erreur lors de la mise à jour du compteur du panier:', error);
+                cartCountElement.textContent = '0';
+            });
+    }
+
+    // Fonction pour ajouter un produit au panier
+    function ajouterAuPanier(productId, quantity) {
+        fetch('../panier/ajouter_au_panier.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: `product_id=${productId}&quantity=${quantity}`
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Réponse du serveur après ajout au panier", data);
+                if (data.success) {
+                    updateCartCount(); // Mettre à jour le compteur du panier après ajout
+                } else {
+                    console.error('Erreur lors de l\'ajout au panier :', data.error);
+                }
+            })
+            .catch(error => console.error('Erreur lors de l\'ajout au panier :', error));
+    }
+
+    // Appel initial de updateCartCount
+    updateCartCount();
+
+    // Événements pour ajouter au panier
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', () => {
+            const productId = button.getAttribute('data-product-id');
+            ajouterAuPanier(productId, 1);
+        });
+    });
+
+    // Zoom image et changement d'image principale
     thumbnails.forEach(thumbnail => {
         thumbnail.addEventListener('click', () => {
             const newSrc = thumbnail.getAttribute('data-src');
@@ -43,37 +93,20 @@ document.addEventListener('DOMContentLoaded', () => {
         lens.style.backgroundPosition = `-${(e.clientX - rect.left) * 2 - lensWidth / 2}px -${(e.clientY - rect.top) * 2 - lensHeight / 2}px`;
     }
 
-    if (addToCartButton) {
-        addToCartButton.addEventListener('click', () => {
-            const productId = addToCartButton.getAttribute('data-product-id');
-            addToCart(productId, 1);
-        });
-    }
-
-    function addToCart(productId, quantity) {
-        fetch('../panier/ajouter_au_panier.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: `product_id=${productId}&quantity=${quantity}`
-        })
-            .then(response => response.text())
-            .then(data => {
-                console.log("Réponse brute du serveur après ajout au panier", data);
-                try {
-                    let jsonData = JSON.parse(data);
-                    console.log("Réponse du serveur après ajout au panier", jsonData);
-                    if (!jsonData.error) {
-
-                    } else {
-                        alert(jsonData.error);
-                    }
-                } catch (e) {
-                    console.error("Erreur de parsing JSON : ", e);
-                    console.error("Données de réponse brute : ", data);
-                }
-            })
-            .catch(error => console.error('Erreur lors de l\'ajout au panier :', error));
+    function getCursorPos(e) {
+        const rect = mainImage.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        return { x: x - window.pageXOffset, y: y - window.pageYOffset };
     }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const descriptionToggle = document.querySelector('.description-toggle');
+    const descriptionContainer = document.querySelector('.description-container');
+
+    descriptionToggle.addEventListener('click', () => {
+        descriptionContainer.classList.toggle('active');
+    });
+});
+

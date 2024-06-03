@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nouvelle Page</title>
+    <title>El Dorado</title>
     <link rel="icon" href="pageindex/icon.png" type="image/png">
-    <link rel="stylesheet" href="pageindex/styles.css">
-    <script src="../commun/common.js" defer></script>
-
+    <link rel="stylesheet" href="pageindex/styles.css?v=1.0">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -33,19 +34,16 @@
                     <li><a href="#accueil">Accueil</a></li>
                     <li><a href="boutique/boutique.html">Boutique</a></li>
                     <li><a href="#boutique">Nouveauté</a></li>
-                    <li><a href="#histoire">Histoire</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="#mon-compte">Mon compte</a></li>
+                    <li><a href="#histoire">Blog</a></li>
+                    <li><a href="navigation/nouscontacter.html">Contact</a></li>
                 </ul>
             </nav>
-
             <div class="cart">
                 <a href="panier/panier.html">
                     <img src="pageindex/panier.png" alt="Cart">
                     <span id="cart-count" class="cart-count">0</span>
                 </a>
             </div>
-
         </header>
     </div>
 
@@ -65,51 +63,156 @@
     </div>
 
     <section id="boutique" class="second-section">
-        <h2>Nouveauté</h2>
-        <div class="product-container">
-            <div class="single-product">
-                <a href="pagedesarticle/pagearticle.html">
-                    <img src="imgTest/000.JPG" alt="Produit Unique">
-                </a>
-                <div class="product-info">
-                    <h3>Mochila L Uni</h3>
-                    <p class="price">XX,XX€</p>
-                    <a href="boutique/boutique.html" class="button">Voir la Boutique</a>
+        <div class="nouveaute-container">
+            <h2 class="nouveaute-title">Nouveauté</h2>
+        </div>
+        <div class="carousel-container">
+            <div class="carousel">
+                <div class="carousel-item">
+                    <a href="boutique/boutique.html">
+                        <img src="imgTest/000.JPG" alt="Produit Unique">
+                    </a>
+                    <div class="product-info">
+                        <h3>Mochila L Uni</h3>
+                        <p class="price">160,00€</p>
+                        <a href="boutique/boutique.html" class="button">Voir la Boutique</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <a href="boutique/boutique.html">
+                        <img src="imgTest/003.JPG" alt="Deuxième Produit">
+                    </a>
+                    <div class="product-info">
+                        <h3>Deuxième Produit</h3>
+                        <p class="price">180,00€</p>
+                        <a href="boutique/boutique.html" class="button">Voir la Boutique</a>
+                    </div>
+                </div>
+                <!-- Ajouter plus d'éléments de carousel ici -->
+                <div class="carousel-item">
+                    <a href="boutique/boutique.html">
+                        <img src="imgTest/006.JPG" alt="Troisième Produit">
+                    </a>
+                    <div class="product-info">
+                        <h3>Troisième Produit</h3>
+                        <p class="price">150,00€</p>
+                        <a href="boutique/boutique.html" class="button">Voir la Boutique</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <a href="boutique/boutique.html">
+                        <img src="imgTest/009.JPG" alt="Quatrième Produit">
+                    </a>
+                    <div class="product-info">
+                        <h3>Quatrième Produit</h3>
+                        <p class="price">170,00€</p>
+                        <a href="boutique/boutique.html" class="button">Voir la Boutique</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <a href="boutique/boutique.html">
+                        <img src="imgTest/012.JPG" alt="Cinquième Produit">
+                    </a>
+                    <div class="product-info">
+                        <h3>Cinquième Produit</h3>
+                        <p class="price">200,00€</p>
+                        <a href="boutique/boutique.html" class="button">Voir la Boutique</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <a href="boutique/boutique.html">
+                        <img src="imgTest/015.JPG" alt="Sixième Produit">
+                    </a>
+                    <div class="product-info">
+                        <h3>Sixième Produit</h3>
+                        <p class="price">220,00€</p>
+                        <a href="boutique/boutique.html" class="button">Voir la Boutique</a>
+                    </div>
                 </div>
             </div>
-            <div class="single-product">
-                <img src="imgTest/003.JPG" alt="Deuxième Produit">
-                <div class="product-info">
-                    <h3>Deuxième Produit</h3>
-                    <p class="price">XX,XX€</p>
-                    <a href="#boutique" class="button">Voir la Boutique</a>
-                </div>
-            </div>
+            <button class="prev" onclick="moveCarousel(-1)">&#10094;</button>
+            <button class="next" onclick="moveCarousel(1)">&#10095;</button>
         </div>
     </section>
 
-    <section id="histoire" class="main-content">
-        <h2>Histoire</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi tempore temporibus iste minus. Eos quam error
-            facere aliquam at consequuntur possimus nostrum odit incidunt necessitatibus est, ea, modi fugiat dicta!</p>
+    <section id="histoire-video" class="main-content">
+        <video autoplay muted loop id="background-video">
+            <source src="imgTest/video.mp4" type="video/mp4">
+        </video>
     </section>
 
-    <section id="contact" class="second-section">
-        <h2>Contact</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi tempore temporibus iste minus. Eos quam error
-            facere aliquam at consequuntur possimus nostrum odit incidunt necessitatibus est, ea, modi fugiat dicta!</p>
+    <section class="histoire-container">
+        <div class="image-container">
+            <img src="pageindex/girl.jpg" alt="Histoire Image">
+        </div>
+        <div id="histoire" class="text-container">
+            <h2>Histoire</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla condimentum, eros in pharetra aliquam,
+                metus sem fermentum massa, eu mollis mi felis sit amet ligula. Integer at tincidunt ex. Etiam in dui ut
+                lectus hendrerit ultrices.</p>
+                <a href="blog/indexblog.html" class="btn">Lire plus</a>
+        </div>
     </section>
 
-    <section id="mon-compte" class="main-content">
-        <h2>Mon compte</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi tempore temporibus iste minus. Eos quam error
-            facere aliquam at consequuntur possimus nostrum odit incidunt necessitatibus est, ea, modi fugiat dicta!</p>
+    <section id="tissu" class= "qualité" >
+        <div 
+
+
+
+
+
+
+
     </section>
 
-    <script src="pageindex/script.js" defer></script>
+    <section class="info-section">
+        <div class="info-container">
+            <span>Satisfait ou remboursé</span>
+            <span class="separator">•</span>
+            <span>Échanges et retours gratuits</span>
+            <span class="separator">•</span>
+            <span>Paiement sécurisé</span>
+        </div>
+    </section>
+    
+
+    <section class="info-section" style="background-color: white;">
+    <div class="info-item" id="temptation">
+        <div class="icon" onclick="showText('temptation')">
+            <img src="pageindex/securité.png" alt="Lock Icon">
+        </div>
+        <div class="text" id="temptation-text">
+            LAISSEZ VOUS TENTER<br>
+            Qu'attendez vous ? C'est le moment de vous faire plaisir ! Découvrez nos produits dès maintenant et laissez vous tenter par ce que vous aimez. 📦✨
+        </div>
+    </div>
+    <div class="info-item" id="secure-payment">
+        <div class="icon" onclick="showText('secure-payment')">
+            <img src="pageindex/aime.png" alt="Heart Icon">
+        </div>
+        <div class="text" id="secure-payment-text">
+            PAIEMENT SÉCURISÉ<br>
+            Effectuez vos achats en toute confiance grâce à notre paiement sécurisé. Vos informations sont en sécurité avec nous. 💳🔒
+        </div>
+    </div>
+    <div class="info-item" id="free-delivery">
+        <div class="icon" onclick="showText('free-delivery')">
+            <img src="pageindex/livrer.png" alt="Delivery Icon">
+        </div>
+        <div class="text" id="free-delivery-text">
+            LIVRAISON GRATUITE<br>
+            Profitez de la livraison gratuite sur toutes vos commandes dès aujourd'hui ! Faites vous plaisir en toute tranquillité. 🚚✨
+        </div>
+    </div>
+</section>
 
 
+    
+
+    <footer></footer>
+
+    <script src="pageindex/script.js?V=1.0" defer></script>
+    <script src="footer/footer.js" defer></script>
 </body>
-
 
 </html>

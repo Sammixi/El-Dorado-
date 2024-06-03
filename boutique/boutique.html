@@ -5,9 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boutique</title>
+    <link rel="stylesheet" href="../animations/animations.css">
+    <link rel="icon" href="../pageindex/icon.png" type="image/png">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="animations.css">
-    <script src="commun/common.js" defer></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;700&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script src="../commun/common.js?v=1.0" defer></script>
 </head>
 
 <body>
@@ -27,13 +31,12 @@
                 </div>
             </div>
             <nav>
-                <ul id="navigation-list" class="nav-center">
+                <ul>
                     <li><a href="../index.html#accueil">Accueil</a></li>
-                    <li><a href="boutique.html">Boutique</a></li>
+                    <li><a href="../boutique/boutique.html">Boutique</a></li>
                     <li><a href="../index.html#boutique">Nouveauté</a></li>
-                    <li><a href="../index.html#histoire">Histoire</a></li>
-                    <li><a href="../index.html#contact">Contact</a></li>
-                    <li><a href="../index.html#mon-compte">Mon compte</a></li>
+                    <li><a href="../index.html#histoire">Blog</a></li>
+                    <li><a href="../navigation/nouscontacter.html">Contact</a></li>
                 </ul>
             </nav>
             <div class="cart">
@@ -44,54 +47,112 @@
             </div>
         </header>
     </div>
-
     <section class="hero">
         <h1>Boutique</h1>
     </section>
-
     <div class="breadcrumbs">
         <a href="../index.html">Accueil</a>
     </div>
-
     <section class="categories">
         <label for="category-select">Catégories de produits</label>
         <select id="category-select">
             <option value="">Sélectionner une catégorie</option>
         </select>
     </section>
-
     <section class="product-list">
+        <!-- Article 1 -->
         <div class="product-item">
-            <img src="../imgTest/000.JPG" alt="Article 1">
-            <h2>Mochila L Macram</h2>
-            <p class="price">10,00€</p>
+            <a href="../pagedesarticle/article.php?id=1"><img src="../imgTest/000.JPG" alt="Article 1"></a>
+            <h2>Produit A</h2>
+            <p class="price">160,00€</p>
             <div class="button-container">
                 <a href="../pagedesarticle/article.php?id=1" class="button left-button">Voir l'article</a>
                 <button class="button right-button add-to-cart" data-product-id="1">Ajouter au panier</button>
             </div>
         </div>
+        <!-- Article 2 -->
         <div class="product-item">
-            <img src="../imgTest/003.JPG" alt="Article 2">
-            <h2>Mochila L Multi</h2>
-            <p class="price">15,00€</p>
+            <a href="../pagedesarticle/article.php?id=2"><img src="../imgTest/003.JPG" alt="Article 2"></a>
+            <h2>Produit B</h2>
+            <p class="price">180,00€</p>
             <div class="button-container">
                 <a href="../pagedesarticle/article.php?id=2" class="button left-button">Voir l'article</a>
                 <button class="button right-button add-to-cart" data-product-id="2">Ajouter au panier</button>
             </div>
         </div>
+        <!-- Article 3 -->
         <div class="product-item">
-            <img src="../imgTest/006.JPG" alt="Article 3">
-            <h2>Mochila L Multi</h2>
-            <p class="price">20,00€</p>
+            <a href="../pagedesarticle/article.php?id=3"><img src="../imgTest/006.JPG" alt="Article 3"></a>
+            <h2>Produit C</h2>
+            <p class="price">120,00€</p>
             <div class="button-container">
                 <a href="../pagedesarticle/article.php?id=3" class="button left-button">Voir l'article</a>
                 <button class="button right-button add-to-cart" data-product-id="3">Ajouter au panier</button>
             </div>
         </div>
+        <!-- Article 4 -->
+        <div class="product-item">
+            <a href="../pagedesarticle/article.php?id=4"><img src="../imgTest/009.JPG" alt="Article 4"></a>
+            <h2>Produit D</h2>
+            <p class="price">220,00€</p>
+            <div class="button-container">
+                <a href="../pagedesarticle/article.php?id=4" class="button left-button">Voir l'article</a>
+                <button class="button right-button add-to-cart" data-product-id="4">Ajouter au panier</button>
+            </div>
+        </div>
+        <!-- Article 5 -->
+        <div class="product-item">
+            <a href="../pagedesarticle/article.php?id=5"><img src="../imgTest/012.JPG" alt="Article 5"></a>
+            <h2>Produit E</h2>
+            <p class="price">160,00€</p>
+            <div class="button-container">
+                <a href="../pagedesarticle/article.php?id=5" class="button left-button">Voir l'article</a>
+                <button class="button right-button add-to-cart" data-product-id="5">Ajouter au panier</button>
+            </div>
+        </div>
+        <!-- Article 6 -->
+        <div class="product-item">
+            <a href="../pagedesarticle/article.php?id=6"><img src="../imgTest/015.JPG" alt="Article 6"></a>
+            <h2>Produit F</h2>
+            <p class="price">120,00€</p>
+            <div class="button-container">
+                <a href="../pagedesarticle/article.php?id=6" class="button left-button">Voir l'article</a>
+                <button class="button right-button add-to-cart" data-product-id="6">Ajouter au panier</button>
+            </div>
+        </div>
+        <!-- Article 7 -->
+        <div class="product-item">
+            <a href="../pagedesarticle/article.php?id=7"><img src="../imgTest/018.JPG" alt="Article 7"></a>
+            <h2>Produit G</h2>
+            <p class="price">220,00€</p>
+            <div class="button-container">
+                <a href="../pagedesarticle/article.php?id=7" class="button left-button">Voir l'article</a>
+                <button class="button right-button add-to-cart" data-product-id="7">Ajouter au panier</button>
+            </div>
+        </div>
+        <!-- Article 8 -->
+        <div class="product-item">
+            <a href="../pagedesarticle/article.php?id=8"><img src="../imgTest/021.JPG" alt="Article 8"></a>
+            <h2>Produit H</h2>
+            <p class="price">160,00€</p>
+            <div class="button-container">
+                <a href="../pagedesarticle/article.php?id=8" class="button left-button">Voir l'article</a>
+                <button class="button right-button add-to-cart" data-product-id="8">Ajouter au panier</button>
+            </div>
+        </div>
+        <!-- Ajoutez d'autres articles de la même manière -->
     </section>
+    <div class="pagination">
+        <a href="boutique_page2.html">&laquo; </a>
+        <a href="boutique.html" class="active">1</a>
+        <a href="boutique_page2.html">2</a>
+        <a href="boutique_page3.html">3</a>
+        <a href="boutique_page2.html"> &raquo;</a>
+    </div>
 
+    <footer></footer>
     <script src="script.js" defer></script>
-
+    <script src="../footer/footer.js" defer></script>
 </body>
 
 </html>

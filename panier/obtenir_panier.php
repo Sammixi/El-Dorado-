@@ -15,7 +15,7 @@ if (!isset($_SESSION['panier']) || empty($_SESSION['panier'])) {
 $panier = $_SESSION['panier'];
 $result = [];
 
-require 'db_connect.php'; 
+require 'db_connect.php';
 
 foreach ($panier as $id => $quantite) {
     $stmt = $conn->prepare("
