@@ -4,7 +4,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 $servername = "127.0.0.1"; // Utilisez 127.0.0.1 au lieu de localhost
-$port = "3309"; // Assurez-vous que ce port est correct
+$port = "3306"; // Assurez-vous que ce port est correct
 $username = "root";
 $password = "";
 $dbname = "db_panier"; // Nom de la base de données
