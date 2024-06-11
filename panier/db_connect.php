@@ -3,11 +3,12 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-$servername = "127.0.0.1"; // Utilisez 127.0.0.1 au lieu de localhost
-$port = "3306"; // Assurez-vous que ce port est correct
-$username = "root";
-$password = "";
-$dbname = "db_panier"; // Nom de la base de données
+// Remplacez ces valeurs par vos informations MySQL Hostinger
+$servername = "mysql.hostinger.com"; // Nom d'hôte MySQL de Hostinger
+$port = "3306"; // Généralement, le port est 3306
+$username = "u652266785_ElDorado"; // Votre nom d'utilisateur MySQL
+$password = "5_9V69yxsAC5d#u "; // Votre mot de passe MySQL
+$dbname = "u652266785_db_eldorado"; // Le nom de votre base de données
 
 // Créer la connexion
 $conn = new mysqli($servername, $username, $password, $dbname, $port);
